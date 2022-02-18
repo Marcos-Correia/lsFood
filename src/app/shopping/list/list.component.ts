@@ -15,4 +15,7 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onIngridientAdded(ingredient:Ingredient){
+    this.ingredients.push(ingredient)
+  }
 }
