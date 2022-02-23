@@ -5,7 +5,6 @@ import { RecipeBookComponent } from "./recipe-book/recipe-book.component";
 import { RecipeEditComponent } from "./recipe-book/recipe-edit/recipe-edit.component";
 import { RecipeStartComponent } from "./recipe-book/recipe-start/recipe-start.component";
 import { ShoppingComponent } from "./shopping/shopping.component";
-
 const appRoutes:Routes=[
     //order matters
     {path:'',redirectTo:'/recipes', pathMatch:'full'},
@@ -22,5 +21,4 @@ const appRoutes:Routes=[
     exports:[RouterModule]
 })
 export class AppRoutingModule{
-
 }
