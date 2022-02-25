@@ -19,6 +19,9 @@ export class ListComponent implements OnInit, OnDestroy {
       }
     )
   }
+  onEdititem(index:number){
+    this.ingredientsService.startingEditing.next(index)
+  }
   ngOnDestroy(): void {
     this.ingredientChanged.unsubscribe()
   }
