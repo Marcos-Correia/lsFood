@@ -18,24 +18,22 @@ export class DataStorageService {
       })
   }
   fetchRecipes() {
-    this.http
+    return this.http
       .get<Recipe[]>(
         apiUrl,
-      ).subscribe(recipes=>{
-        this.recipeServices.setRecipes(recipes)
-      })
-      // .pipe(
-      //   map(recipes => {
-      //     return recipes.map(recipe => {
-      //       return {
-      //         ...recipe,
-      //         ingredients: recipe.ingredients ? recipe.ingredients : []
-      //       };
-      //     });
-      //   }),
-      //   tap(recipes => {
-      //     this.recipeServices.setRecipes(recipes);
-      //   })
-      // )
+      ).pipe(
+        map(recipes => {
+          return recipes.map(recipe => {
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : []
+            };
+          });
+        }),
+        tap(recipes => {
+          this.recipeServices.setRecipes(recipes);
+        })
+      )
+      
   }
 }

@@ -4,6 +4,7 @@ import { DetailComponent } from "./recipe-book/detail/detail.component";
 import { RecipeBookComponent } from "./recipe-book/recipe-book.component";
 import { RecipeEditComponent } from "./recipe-book/recipe-edit/recipe-edit.component";
 import { RecipeStartComponent } from "./recipe-book/recipe-start/recipe-start.component";
+import { RecipesResolverService } from "./recipe-book/recipes-resolver.service";
 import { ShoppingComponent } from "./shopping/shopping.component";
 const appRoutes:Routes=[
     //order matters
@@ -11,8 +12,8 @@ const appRoutes:Routes=[
     {path:'recipes', component:RecipeBookComponent, children:[
         {path:'', component:RecipeStartComponent},
         {path:'new', component:RecipeEditComponent},
-        {path:':id', component:DetailComponent},
-        {path:':id/edit', component:RecipeEditComponent},
+        {path:':id', component:DetailComponent, resolve:[RecipesResolverService]},
+        {path:':id/edit', component:RecipeEditComponent, resolve:[RecipesResolverService]},
     ]},
     {path:'shopping-list', component:ShoppingComponent}
 ]
